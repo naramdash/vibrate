@@ -30,14 +30,17 @@ function endVibrate() {
     @touchmove.prevent="startVibrate()"
     @touchend.prevent="endVibrate()"
   >
-    <h1 class="title">Vibe Me</h1>
+    <h1 class="title">Click Me! Vibe Me!</h1>
+    <span>
+      demonstrate
+      <a href="https://vueuse.org/core/usevibrate/#usevibrate">vueuse3 useVibrate</a>
+    </span>
     <img class="image" src="./assets/vibe.png" />
   </div>
 </template>
 
 <style scoped>
 .fullscreen {
-  height: 100vh;
   width: 100vw;
 }
 
