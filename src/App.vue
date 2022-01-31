@@ -7,6 +7,7 @@ import { useVibrate } from '@vueuse/core'
 const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
 
 function startVibrate() {
+  console.log("check")
   if (isSupported)
     vibrate()
   else
@@ -20,26 +21,33 @@ function endVibrate() {
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-
-  <h1
-    @mousedown="startVibrate()"
-    @mousemove="startVibrate()"
-    @mouseup="endVibrate()"
-    @touchstart="startVibrate()"
-    @touchmove="startVibrate()"
-    @touchend="endVibrate()"
-  >Vibe Me</h1>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div
+    class="fullscreen"
+    @mousedown.prevent="startVibrate()"
+    @mousemove.prevent="startVibrate()"
+    @mouseup.prevent="endVibrate()"
+    @touchstart.prevent="startVibrate()"
+    @touchmove.prevent="startVibrate()"
+    @touchend.prevent="endVibrate()"
+  >
+    <h1 class="title">Vibe Me</h1>
+    <img class="image" src="./assets/vibe.png" />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style scoped>
+.fullscreen {
+  height: 100vh;
+  width: 100vw;
+}
+
+.title {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.image {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  width: 80vw;
 }
 </style>
